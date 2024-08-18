@@ -2,9 +2,7 @@ import React, { useState } from "react";
 
 import "./Navbar.css";
 
-const Dashboard = ({ handleLogout }) => {
-  const [selectedItem, setSelectedItem] = useState("Dashboard"); // Default selected item is "Dashboard"
-
+const Dashboard = ({ handleLogout, setSelectedItem, selectedItem }) => {
   return (
     <div className="main-container">
       <div className="nav-container">
