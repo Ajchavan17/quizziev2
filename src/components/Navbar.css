@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.nav-container {
+  background-color: white;
+  height: 100vh;
+  width: 193px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-item-1 {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item-1 h2 {
+  font-size: 70px;
+  font-family: "Jomhuria", serif;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.nav-item-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 10px;
+}
+
+.nav-item-2 button {
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-item-2 button.selected {
+  height: 38px;
+  width: 176px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(20, 20, 20, 0.5);
+}
+
+.nav-item-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+  gap: 30px;
+}
+
+.nav-item-3 button {
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-style: bold;
+  font-weight: 800;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-item-3 div {
+  height: 0;
+  width: 124px;
+  border: 1px solid #000000;
+}
