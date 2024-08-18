@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-poppins: Poppins;
+  --font-jomhuria: Jomhuria;
+
+  /* font sizes */
+  --font-size-xl: 20px;
+  --font-size-base: 16px;
+
+  /* Colors */
+  --color-whitesmoke-100: #f4f4f4;
+  --color-whitesmoke-200: #f2f2f2;
+  --color-white: #fff;
+  --color-cornflowerblue-100: #a9bcff;
+  --color-darkslategray: #474444;
+
+  /* Gaps */
+  --gap-12xl: 31px;
+  --gap-mini: 15px;
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-30xl: 49px;
+  --padding-9xs: 4px;
+  --padding-10xs: 3px;
+
+  /* Border radiuses */
+  --br-mini: 15px;
+  --br-5xs: 8px;
+  --br-3xs: 10px;
+}
