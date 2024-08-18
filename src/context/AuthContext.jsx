@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState } from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // Initially not authenticated
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Initially not authenticated
 
   // Fake login function for demonstration
   const login = () => {
