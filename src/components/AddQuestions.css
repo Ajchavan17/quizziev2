@@ -1,0 +1,363 @@
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.add-questions-container {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-questions-container-box {
+  height: 671px;
+  width: 845px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-questions-count-container,
+.add-questions-question-container,
+.add-questions-optiontype-container,
+.add-questions-buttons-container {
+  height: 58px;
+  width: 673px;
+  /* background-color: aqua; */
+}
+
+.add-questions-options-container {
+  height: 300px;
+  width: 673px;
+
+  display: flex;
+}
+
+.add-questions-options-container-box,
+.add-questions-timer-container-box {
+  height: 300px;
+  width: 50%;
+}
+
+.add-questions-count-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-questions-counter {
+  background-color: white;
+  border: none;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  height: 58px;
+  width: 58px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 58px;
+  color: #9f9f9f;
+  cursor: pointer;
+}
+.add-questions-icon {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  color: #9f9f9f;
+  cursor: pointer;
+}
+.counter-questions {
+  display: flex;
+  gap: 20px;
+}
+
+.text-content span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+
+  color: #9f9f9f;
+}
+
+.add-questions-question-container input {
+  margin-top: 10px;
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #9f9f9f;
+}
+
+.add-questions-optiontype-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+  margin-bottom: -7px;
+}
+
+.add-questions-optiontype-container {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #9f9f9f;
+}
+
+.add-questions-optiontype-container input {
+  height: 19px;
+  margin-right: -15px;
+  width: 19px;
+}
+
+.add-questions-buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+.cancel-btn {
+  height: 46px;
+  width: 279px;
+
+  border-radius: 10px;
+
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 32px;
+  color: #474444;
+
+  cursor: pointer;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 15px rgba(53, 53, 53, 0.5);
+}
+
+.continue-btn {
+  height: 46px;
+  width: 279px;
+
+  border-radius: 10px;
+
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 32px;
+
+  cursor: pointer;
+  background-color: #60b84b;
+  color: #ffffff;
+}
+
+.radio-btn {
+  position: absolute;
+  height: 300px;
+  margin-left: -50px;
+
+  width: 50px;
+}
+
+.input-field {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-field input {
+  width: 296px;
+  height: 30px;
+  border-radius: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #9f9f9f;
+  box-shadow: 0px 0px 5px rgba(53, 53, 53, 0.3);
+  border: none;
+}
+
+.input-field button {
+  width: 320px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  box-shadow: 0px 0px 5px rgba(53, 53, 53, 0.3);
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #9f9f9f;
+}
+
+.radio-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 47px;
+  margin-top: 10px;
+}
+
+.radio-btn input {
+  height: 15px;
+  width: 15px;
+}
+.add-questions-timer-container-box {
+  display: flex;
+}
+.delete-icon {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  justify-content: end;
+  gap: 45px;
+  margin-top: -75px;
+}
+
+.delete-icon img {
+  height: 18px;
+  width: 16px;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: end;
+  margin-bottom: 40px;
+  padding-left: 200px;
+  gap: 20px;
+}
+
+.timer h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #9f9f9f;
+}
+
+.timer-btn {
+  height: 34px;
+  width: 95px;
+
+  border-radius: 10px;
+
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #474444;
+
+  cursor: pointer;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 15px rgba(53, 53, 53, 0.5);
+}
+
+.timer-btn-selected {
+  height: 34px;
+  width: 95px;
+
+  border-radius: 10px;
+
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+
+  text-align: center;
+  color: white;
+  cursor: pointer;
+
+  background: #d60000;
+}
+
+/* new updated code */
+.option-input-radio {
+  position: absolute;
+  right: 74%;
+  margin-top: 18px;
+  height: 15px;
+  width: 15px;
+  accent-color: #60b84b;
+}
+
+.option-input-input {
+  width: 296px;
+  height: 30px;
+  border-radius: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #9f9f9f;
+  box-shadow: 0px 0px 5px rgba(53, 53, 53, 0.3);
+  border: none;
+  margin-bottom: 20px;
+}
+
+.addOption-btn {
+  width: 320px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  box-shadow: 0px 0px 5px rgba(53, 53, 53, 0.3);
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #9f9f9f;
+}
+
+.option-input-bin {
+  position: absolute;
+  right: 49%;
+  margin-top: 18px;
+}
+
+.question-close-icon {
+  position: absolute;
+  top: 25px;
+  margin-left: 40px;
+  cursor: pointer;
+}

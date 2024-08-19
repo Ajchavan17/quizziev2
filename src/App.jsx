@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import AddQuestions from "./pages/AddQuestions";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/quiz/:quizId/questions" element={<AddQuestions />} />
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>

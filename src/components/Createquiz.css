@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.create-quiz-container {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.create-quiz-container-box {
+  height: 422px;
+  width: 845px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-quiz-container-box div {
+  height: 81px;
+  width: 673px;
+}
+
+.create-quiz-name-container input {
+  height: 60px;
+  width: 655px;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.3);
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 38px;
+  color: #9f9f9f;
+}
+
+.create-quiz-type-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-quiz-type-container h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 38px;
+  color: #9f9f9f;
+}
+
+/* Style for the selected button */
+.create-quiz-type-container button.selectedTestType {
+  background: #60b84b; /* Green background for selected state */
+  color: white; /* Optional: Change text color for selected state */
+  box-shadow: 0px 0px 15px rgba(53, 53, 53, 0.7); /* Optional: Enhance shadow for selected state */
+}
+
+/* Default button style */
+.create-quiz-type-container button {
+  height: 46px;
+  width: 171px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(53, 53, 53, 0.5);
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 38px;
+  color: #9f9f9f;
+  cursor: pointer;
+}
+
+/* Style for selected button */
+.selectedTestType {
+  background-color: #60b84b;
+  color: #ffffff; /* White text for better contrast */
+}
+
+.create-quiz-buttons-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.create-quiz-buttons-container button {
+  height: 46px;
+  width: 279px;
+
+  border-radius: 10px;
+
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 38px;
+
+  cursor: pointer;
+}
+
+.cancel-btn {
+  color: #9f9f9f;
+  background: #ffffff;
+  box-shadow: 0px 0px 15px rgba(53, 53, 53, 0.5);
+}
+
+.continue-btn {
+  background-color: #60b84b;
+  color: #ffffff;
+}

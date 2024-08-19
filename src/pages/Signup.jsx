@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const VITE_REACT_APP_BACKEND_URL = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
@@ -83,7 +84,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        `https://quizzie-backend-rho.vercel.app/api/auth/signup`,
+        `${VITE_REACT_APP_BACKEND_URL}/api/auth/signup`,
         {
           method: "POST",
           headers: {

@@ -135,7 +135,7 @@ input {
 
 .input-error::placeholder {
   color: red;
-  opacity: 1; /* Ensure the placeholder text is fully opaque */
+  opacity: 1;
 }
 
 .error-text {

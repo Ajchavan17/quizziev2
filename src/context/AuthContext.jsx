@@ -1,18 +1,29 @@
-// src/context/AuthContext.js
-import React, { createContext, useContext, useState } from "react";
+// src/context/AuthContext.jsx
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Initially not authenticated
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Fake login function for demonstration
-  const login = () => {
+  useEffect(() => {
+    // Check if token is present in localStorage
+    const token = localStorage.getItem("token");
+    console.log("Retrieved token from localStorage:", token); // Add this line
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const login = (token) => {
+    localStorage.setItem("token", token);
+    console.log("Token saved to localStorage:", token); // Add this line
     setIsAuthenticated(true);
   };
 
-  // Fake logout function for demonstration
   const logout = () => {
+    localStorage.removeItem("token");
+    console.log("Token removed from localStorage"); // Add this line
     setIsAuthenticated(false);
   };
 
