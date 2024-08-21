@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AddQuestions from "./pages/AddQuestions";
+import QuizAttempt from "./pages/QuizAttempt";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/quiz/:quizId/questions" element={<AddQuestions />} />
           <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/quiz/:quizId" element={<QuizAttempt />} />
         </Routes>
       </Router>
     </AuthProvider>

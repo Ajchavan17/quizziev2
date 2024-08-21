@@ -1,0 +1,65 @@
+.congrats-container-box {
+  position: absolute;
+  height: 481px;
+  width: 845px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  /* background-color: aqua; */
+}
+
+.share-btn {
+  height: 46px;
+  width: 279px;
+
+  border-radius: 10px;
+
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 32px;
+
+  cursor: pointer;
+  background-color: #60b84b;
+  color: #ffffff;
+}
+
+.congrats-container-box h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 39px;
+  line-height: 58px;
+  text-align: center;
+  color: #474444;
+}
+
+.text-container {
+  height: 118px;
+  width: 502px;
+}
+
+.link-container {
+  width: 675px;
+  height: 60px;
+  background-color: #ededed;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.link-container a {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 38px;
+  color: #474444;
+  padding-left: 10px;
+}

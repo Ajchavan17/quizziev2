@@ -48,6 +48,8 @@
 }
 
 .add-questions-count-container {
+  /* position: absolute;
+  top: 150px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,7 +181,7 @@
 .radio-btn {
   position: absolute;
   height: 300px;
-  margin-left: -50px;
+  margin-left: -70px;
 
   width: 50px;
 }
@@ -312,7 +314,7 @@
 /* new updated code */
 .option-input-radio {
   position: absolute;
-  right: 74%;
+  right: 69%;
   margin-top: 18px;
   height: 15px;
   width: 15px;
@@ -360,4 +362,8 @@
   top: 25px;
   margin-left: 40px;
   cursor: pointer;
+}
+
+.add-questions-container-box-hidden {
+  display: none;
 }
