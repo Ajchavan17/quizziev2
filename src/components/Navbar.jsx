@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 
 import "./Navbar.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-const Dashboard = ({ handleLogout, setSelectedItem, selectedItem }) => {
+const Dashboard = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+  const [selectedItem, setSelectedItem] = useState("Dashboard");
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <div className="main-container">
       <div className="nav-container">
@@ -10,24 +21,24 @@ const Dashboard = ({ handleLogout, setSelectedItem, selectedItem }) => {
           <h2>QUIZZIE</h2>
         </div>
         <div className="nav-item-2">
-          <button
-            className={selectedItem === "Dashboard" ? "selected" : ""}
-            onClick={() => setSelectedItem("Dashboard")}
+          <NavLink
+            to={"/dashboard"}
+            className={({ isActive }) => (isActive ? "selected" : "")}
           >
             Dashboard
-          </button>
-          <button
-            className={selectedItem === "Analytics" ? "selected" : ""}
-            onClick={() => setSelectedItem("Analytics")}
+          </NavLink>
+          <NavLink
+            to={"/analytics"}
+            className={({ isActive }) => (isActive ? "selected" : "")}
           >
             Analytics
-          </button>
-          <button
-            className={selectedItem === "Create Quiz" ? "selected" : ""}
-            onClick={() => setSelectedItem("Create Quiz")}
+          </NavLink>
+          <NavLink
+            to={"/createquiz"}
+            className={({ isActive }) => (isActive ? "selected" : "")}
           >
             Create Quiz
-          </button>
+          </NavLink>
         </div>
         <div className="nav-item-3">
           <div />

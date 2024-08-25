@@ -17,6 +17,8 @@ const QuizAttempt = () => {
         setQuestions(data.questions);
         setTimer(data.questions[0].timer || 0);
         console.log("Quiz fetched");
+
+        incrementViewCount();
       })
       .catch((error) => console.error("Error fetching quiz:", error));
   }, [quizId]);
@@ -31,6 +33,20 @@ const QuizAttempt = () => {
       handleNextQuestion();
     }
   }, [timer]);
+
+  const incrementViewCount = () => {
+    fetch(
+      `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/quiz/${quizId}/views`,
+      {
+        method: "PUT",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("View count incremented", data.views);
+      })
+      .catch((error) => console.error("Error incrementing view count:", error));
+  };
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {

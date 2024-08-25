@@ -14,6 +14,9 @@ import Signup from "./pages/Signup";
 import AddQuestions from "./pages/AddQuestions";
 import QuizAttempt from "./pages/QuizAttempt";
 import QuizResult from "./pages/QuizResult";
+import Createquiz from "./pages/Createquiz";
+import Analytics from "./pages/Analytics";
+import QAAnalysis from "./pages/QAAnalysis";
 
 function App() {
   return (
@@ -30,10 +33,13 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/createquiz" element={<Createquiz />} />
+          <Route path="/analytics" element={<Analytics />} />
           <Route path="/quiz/:quizId/questions" element={<AddQuestions />} />
           <Route path="/" element={<Navigate to="/dashboard" />} />
           <Route path="/quiz/:quizId" element={<QuizAttempt />} />
           <Route path="/quiz/:quizId/result" element={<QuizResult />} />
+          <Route path="/analytics/qa/:quizId" element={<QAAnalysis />} />
         </Routes>
       </Router>
     </AuthProvider>

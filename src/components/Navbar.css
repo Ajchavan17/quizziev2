@@ -31,16 +31,19 @@
   padding: 10px;
 }
 
-.nav-item-2 button {
+.nav-item-2 a {
+  text-decoration: none;
   font-size: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   background: none;
   border: none;
   cursor: pointer;
+  text-align: center;
+  color: #000000;
 }
 
-.nav-item-2 button.selected {
+.nav-item-2 a.selected {
   height: 38px;
   width: 176px;
   border-radius: 10px;

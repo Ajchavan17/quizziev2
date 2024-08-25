@@ -1,0 +1,111 @@
+.content-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.quiz-qa-analysis-container {
+  width: 1100px;
+  height: 700px;
+}
+
+.quiz-qa-analysis-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiz-qa-analysis-info {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.quiz-qa-analysis-question-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz-qa-analysis-options-info {
+  display: flex;
+  gap: 30px;
+}
+.quiz-qa-analysis-options-info div {
+  height: 89px;
+  width: 245px;
+  background-color: aliceblue;
+}
+.quiz-qa-analysis-options-attempt,
+.quiz-qa-analysis-options-answered-correct,
+.quiz-qa-analysis-options-answered-incorrect {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.hr {
+  width: 816px;
+  height: 0px;
+  margin-top: 30px;
+  border: 2px solid #e0e0e0;
+}
+
+.quiz-qa-analysis-header {
+  position: sticky;
+  top: 0;
+}
+
+.quiz-qa-analysis-header div h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 60px;
+  color: #5076ff;
+}
+
+.quiz-qa-analysis-info span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22px;
+  color: #ff5d01;
+}
+
+.quiz-qa-analysis-question h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.quiz-qa-analysis-options-attempt :nth-child(2),
+.quiz-qa-analysis-options-answered-correct :nth-child(2),
+.quiz-qa-analysis-options-answered-incorrect :nth-child(2) {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #474444;
+}
+
+.quiz-qa-analysis-options-attempt :nth-child(1),
+.quiz-qa-analysis-options-answered-correct :nth-child(1),
+.quiz-qa-analysis-options-answered-incorrect :nth-child(1) {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 45px;
+  color: #474444;
+}
