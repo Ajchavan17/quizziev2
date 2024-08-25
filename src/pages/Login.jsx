@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const { login } = useAuth();
@@ -41,13 +43,16 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
+        toast.success("Logged in successfully!");
         console.log("Token received:", data.token);
         login(data.token);
         navigate("/dashboard");
       } else {
+        toast.error("Login failed. Please try again.");
         setFormError(data.message || "Invalid email or password");
       }
     } catch (error) {
+      toast.error("Login failed. Please try again.");
       console.error("Login error:", error);
       setFormError("Server error");
     }
@@ -97,6 +102,7 @@ function Login() {
           </div>
         </form>
       </div>
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 }

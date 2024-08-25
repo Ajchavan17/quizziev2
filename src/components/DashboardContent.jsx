@@ -96,7 +96,7 @@ function DashboardContent() {
               <div className="trending-quiz-name-attempt">
                 <h1>{quiz.name}</h1>
                 <span>
-                  <p>{quiz.views}</p>
+                  <p>{formatImpressions(quiz.views)}</p>
                   <img src={eyeIcon} alt="" />
                 </span>
               </div>

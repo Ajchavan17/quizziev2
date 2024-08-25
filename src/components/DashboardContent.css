@@ -2,7 +2,7 @@
   background-color: #ededed;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 }
 
@@ -11,10 +11,10 @@
   width: 100%;
   background-color: #ededed;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   margin-top: 40px;
   gap: 13px;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .quiz-count-1 {

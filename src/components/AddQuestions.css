@@ -257,7 +257,7 @@
   justify-content: center;
   align-self: end;
   margin-bottom: 40px;
-  padding-left: 200px;
+  padding-left: 250px;
   gap: 20px;
 }
 
@@ -354,7 +354,13 @@
 .option-input-bin {
   position: absolute;
   right: 49%;
-  margin-top: 18px;
+  margin-top: -55px;
+}
+
+.option-input-bin-v2 {
+  position: absolute;
+  right: 36%;
+  margin-top: -55px;
 }
 
 .question-close-icon {
@@ -366,4 +372,33 @@
 
 .add-questions-container-box-hidden {
   display: none;
+}
+
+.option-input-for-turl {
+  display: flex;
+  gap: 30px;
+}
+
+.option-input-for-turl :nth-last-child(2) {
+  width: 255px;
+}
+
+.option-input-for-turl-input-text {
+  width: 191px !important;
+  height: 30px;
+  border-radius: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #9f9f9f;
+  box-shadow: 0px 0px 5px rgba(53, 53, 53, 0.3);
+  border: none;
+  margin-bottom: 20px;
+}
+
+.correct-option {
+  color: #ffffff !important;
+  background: #60b84b;
 }

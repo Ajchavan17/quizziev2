@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./AddQuestions.css";
 import binIcon from "../assets/binIcon.svg";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import QuizPublished from "./QuizPublished";
 
 function AddQuestionsComp() {
   const { quizId } = useParams();
+  const navigate = useNavigate();
+
   const [questions, setQuestions] = useState([
     {
       questionText: "",
-      optionType: "",
-      options: ["", ""],
+      optionType: "Text",
+      options: [{ text: "" }, { text: "" }],
       correctOption: null,
       timer: "OFF",
     },
@@ -37,8 +39,8 @@ function AddQuestionsComp() {
       ...questions,
       {
         questionText: "",
-        optionType: "",
-        options: ["", ""],
+        optionType: "Text",
+        options: [{ text: "" }, { text: "" }],
         correctOption: null,
         timer: "OFF",
       },
@@ -49,18 +51,36 @@ function AddQuestionsComp() {
   const handleInputChange = (e, field) => {
     const updatedQuestions = [...questions];
     updatedQuestions[activeQuestionIndex][field] = e.target.value;
+    if (field === "optionType") {
+      if (e.target.value === "Text&ImageURL") {
+        updatedQuestions[activeQuestionIndex].options = [
+          { text: "", url: "" },
+          { text: "", url: "" },
+        ];
+      } else {
+        updatedQuestions[activeQuestionIndex].options = [
+          { text: "" },
+          { text: "" },
+        ];
+      }
+    }
     setQuestions(updatedQuestions);
   };
 
-  const handleOptionChange = (e, index) => {
+  const handleOptionChange = (e, index, field = "text") => {
     const updatedQuestions = [...questions];
-    updatedQuestions[activeQuestionIndex].options[index] = e.target.value;
+    updatedQuestions[activeQuestionIndex].options[index][field] =
+      e.target.value;
     setQuestions(updatedQuestions);
   };
 
   const handleAddOption = () => {
     const updatedQuestions = [...questions];
-    updatedQuestions[activeQuestionIndex].options.push("");
+    const newOption =
+      questions[activeQuestionIndex].optionType === "Text&ImageURL"
+        ? { text: "", url: "" }
+        : { text: "" };
+    updatedQuestions[activeQuestionIndex].options.push(newOption);
     setQuestions(updatedQuestions);
   };
 
@@ -98,7 +118,8 @@ function AddQuestionsComp() {
       questionText: question.questionText,
       optionType: question.optionType,
       options: question.options.map((option, index) => ({
-        text: option,
+        text: option.text,
+        url: option.url,
         correct: question.correctOption === index,
       })),
       timer: question.timer === "OFF" ? 0 : parseInt(question.timer),
@@ -232,17 +253,71 @@ function AddQuestionsComp() {
                     }
                     onChange={() => handleSelectCorrectOption(index)}
                   />
-                  <input
-                    className="option-input-input"
-                    type="text"
-                    placeholder={`Text ${index + 1}`}
-                    value={option}
-                    onChange={(e) => handleOptionChange(e, index)}
-                  />
+                  <div
+                    className={
+                      questions[activeQuestionIndex].optionType ===
+                      "Text&ImageURL"
+                        ? "option-input-for-turl"
+                        : ""
+                    }
+                  >
+                    <input
+                      className={`${
+                        questions[activeQuestionIndex].correctOption === index
+                          ? "correct-option"
+                          : ""
+                      }
+                      ${
+                        questions[activeQuestionIndex].optionType ===
+                        "Text&ImageURL"
+                          ? "option-input-for-turl-input-text"
+                          : "option-input-input"
+                      }
+                      }`}
+                      type="text"
+                      placeholder={`${
+                        questions[activeQuestionIndex].optionType === "ImageURL"
+                          ? "Image URL"
+                          : "Text"
+                      } ${index + 1}`}
+                      value={option.text}
+                      onChange={(e) => handleOptionChange(e, index)}
+                    />
+                    {questions[activeQuestionIndex].optionType ===
+                      "Text&ImageURL" && (
+                      <input
+                        style={
+                          questions[activeQuestionIndex].correctOption === index
+                            ? {
+                                color: "#ffffff !important",
+                                background: "#60b84b",
+                              }
+                            : { zIndex: "1000" }
+                        }
+                        className={`${
+                          questions[activeQuestionIndex].correctOption === index
+                            ? "correct-option"
+                            : ""
+                        }
+                        option-input-input
+                        }`}
+                        type="url"
+                        placeholder={`Image URl ${index + 1}`}
+                        value={option.url || ""}
+                        onChange={(e) => handleOptionChange(e, index, "url")}
+                      />
+                    )}
+                  </div>
+
                   {questions[activeQuestionIndex].options.length > 2 &&
                     index >= 2 && (
                       <img
-                        className="option-input-bin"
+                        className={
+                          questions[activeQuestionIndex].optionType ===
+                          "Text&ImageURL"
+                            ? "option-input-bin-v2"
+                            : "option-input-bin"
+                        }
                         src={binIcon}
                         alt="Delete"
                         onClick={() => handleRemoveOption(index)}
@@ -306,7 +381,11 @@ function AddQuestionsComp() {
             </div>
           </div>
           <div className="add-questions-buttons-container">
-            <button type="button" className="cancel-btn">
+            <button
+              type="button"
+              className="cancel-btn"
+              onClick={() => navigate("/dashboard")}
+            >
               Cancel
             </button>
             <button type="submit" className="continue-btn">

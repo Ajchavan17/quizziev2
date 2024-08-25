@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 function Analytics() {
   const [quizData, setQuizData] = useState([]);
   const [quizToDelete, setQuizToDelete] = useState(null); // Store the quiz ID to be deleted
-
+  const [quizLength, setQuizLength] = useState(quizData.length);
   // Function to format the impressions
   const formatImpressions = (views) => {
     return views > 1000 ? (views / 1000).toFixed(1) + "K" : views;
@@ -126,57 +126,72 @@ function Analytics() {
             <h1>Quiz Analysis</h1>
           </div>
           <div className="quiz-analysis-table-container">
-            <table className="quiz-table">
-              <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>Quiz Name</th>
-                  <th>Created on</th>
-                  <th>Impression</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {quizData.map((quiz, index) => (
-                  <tr
-                    key={quiz.id}
-                    className={index % 2 === 0 ? "even" : "odd"}
-                  >
-                    <td>{index + 1}</td>
-                    <td>{quiz.name}</td>
-                    <td>{quiz.createdOn}</td>
-                    <td>{quiz.impression}</td>
-                    <td className="table-icons">
-                      <img src={editIcon} alt="editIcon" />
-                      <img
-                        src={binIcon}
-                        alt="binIcon"
-                        onClick={() => handleConfirmDelete(quiz.id)}
-                      />
-                      <img
-                        src={shareIcon}
-                        alt="shareIcon"
-                        onClick={() => handleShareClick(quiz.id)}
-                      />
-                    </td>
-                    <td>
-                      <a
-                        // if quiz.type is Q&A then href is {`/analytics/qa/${quiz.id}`} || if quiz.type is Poll then href is {`/analytics/poll/${quiz.id}`}
-                        href={
-                          quiz.type === "Q&A"
-                            ? `/analytics/qa/${quiz.id}`
-                            : `/analytics/poll/${quiz.id}`
-                        }
-                        className="analysis-link"
-                      >
-                        Question Wise Analysis
-                      </a>
-                    </td>
+            {!quizLength === 0 ? (
+              <h1
+                style={{
+                  textAlign: "center",
+                  marginTop: "20px",
+                  fontFamily: "Poppins",
+                  fontSize: "20px",
+                  fontWeight: "500",
+                  color: "#ff0000",
+                }}
+              >
+                No quiz found
+              </h1>
+            ) : (
+              <table className="quiz-table">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Quiz Name</th>
+                    <th>Created on</th>
+                    <th>Impression</th>
+                    <th></th>
+                    <th></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {quizData.map((quiz, index) => (
+                    <tr
+                      key={quiz.id}
+                      className={index % 2 === 0 ? "even" : "odd"}
+                    >
+                      <td>{index + 1}</td>
+                      <td>{quiz.name}</td>
+                      <td>{quiz.createdOn}</td>
+                      <td>{quiz.impression}</td>
+                      <td className="table-icons">
+                        <img src={editIcon} alt="editIcon" />
+                        <img
+                          src={binIcon}
+                          alt="binIcon"
+                          onClick={() => handleConfirmDelete(quiz.id)}
+                        />
+                        <img
+                          src={shareIcon}
+                          alt="shareIcon"
+                          onClick={() => handleShareClick(quiz.id)}
+                        />
+                      </td>
+                      <td>
+                        <a
+                          // if quiz.type is Q&A then href is {`/analytics/qa/${quiz.id}`} || if quiz.type is Poll then href is {`/analytics/poll/${quiz.id}`}
+                          href={
+                            quiz.type === "Q&A"
+                              ? `/analytics/qa/${quiz.id}`
+                              : `/analytics/poll/${quiz.id}`
+                          }
+                          className="analysis-link"
+                        >
+                          Question Wise Analysis
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       </div>
