@@ -1,29 +1,63 @@
 /* src/QuizResult.css */
+.quiz-result-container {
+  background-color: #041325;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .result-container {
-  background-color: #0c1e3c;
-  color: #fff;
-  padding: 30px;
+  height: 643px;
+  width: 1066px;
+  background-color: #fff;
   border-radius: 10px;
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
-  font-size: 1.8em;
-  margin-bottom: 20px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  color: #474444;
 }
 
 .trophy-image {
-  width: 100px;
-  margin-bottom: 20px;
+  margin-top: -40px;
+  width: 320px;
+  height: 323px;
 }
 
 p {
-  font-size: 1.5em;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  color: #474444;
 }
 
 .score {
   color: #28a745;
   font-weight: bold;
+}
+
+.poll-h2 {
+  width: 824px;
+  height: 333px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 74px;
+  line-height: 111px;
+  text-align: center;
+  color: #474444;
 }

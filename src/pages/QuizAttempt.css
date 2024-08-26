@@ -1,5 +1,5 @@
 /* src/QuizAttempt.css */
-.quiz-container {
+/* .quiz-container {
   background-color: #0c1e3c;
   color: #fff;
   padding: 20px;
@@ -53,4 +53,128 @@
 
 .next-button:hover {
   background-color: #218838;
+} */
+
+.quiz-attempt-container {
+  background-color: #041325;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-container {
+  height: 643px;
+  width: 1066px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.question-header span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: #474444;
+}
+
+.question-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: #474444;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.options {
+  margin-top: 20px;
+  margin-left: 133px;
+  height: 299px;
+  width: 790px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  gap: 20px;
+}
+
+.option-button {
+  height: 112px;
+  width: 320px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 10px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 52px;
+  color: #000000;
+}
+
+.option-image-url {
+  height: 159px;
+  width: 324px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.next-button {
+  height: 56px;
+  width: 320px;
+
+  border-radius: 10px;
+
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 32px;
+
+  cursor: pointer;
+  background-color: #60b84b;
+  color: #ffffff;
+  margin-top: 50px;
+  margin-left: 35%;
+}
+
+.textimgurl-option {
+  height: 159px;
+  width: 320px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.textimgurl-option img {
+  height: 121px;
+  width: 136px;
+  border-radius: 10px;
+}
+
+.textimgurl-option span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000000;
 }

@@ -62,4 +62,12 @@
   line-height: 38px;
   color: #474444;
   padding-left: 10px;
+  overflow: hidden;
+}
+
+.congrats-container-box img {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
 }

@@ -22,6 +22,18 @@ function AddQuestionsComp() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [quizAttemptURL, setQuizAttemptURL] = useState("");
   const VITE_REACT_APP_BACKEND_URL = import.meta.env.VITE_REACT_APP_BACKEND_URL;
+  const [quizType, setQuizType] = useState("Q&A");
+
+  //fetch quiz type and setQuizType
+  useEffect(() => {
+    fetch(`${VITE_REACT_APP_BACKEND_URL}/api/quiz/${quizId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setQuizType(data.type);
+        console.log("Quiz type fetched" + data.type);
+      })
+      .catch((error) => console.error("Error fetching quiz:", error));
+  }, [quizId]);
 
   useEffect(() => {
     console.log("Quiz ID from URL:", quizId);
@@ -244,15 +256,17 @@ function AddQuestionsComp() {
             <div className="add-questions-options-container-box">
               {questions[activeQuestionIndex].options.map((option, index) => (
                 <div key={index} className="option-input-group">
-                  <input
-                    className="option-input-radio"
-                    type="radio"
-                    name="correctAnswer"
-                    checked={
-                      questions[activeQuestionIndex].correctOption === index
-                    }
-                    onChange={() => handleSelectCorrectOption(index)}
-                  />
+                  {quizType === "Poll Type" ? null : (
+                    <input
+                      className="option-input-radio"
+                      type="radio"
+                      name="correctAnswer"
+                      checked={
+                        questions[activeQuestionIndex].correctOption === index
+                      }
+                      onChange={() => handleSelectCorrectOption(index)}
+                    />
+                  )}
                   <div
                     className={
                       questions[activeQuestionIndex].optionType ===
@@ -336,48 +350,53 @@ function AddQuestionsComp() {
               )}
             </div>
             <div className="add-questions-timer-container-box">
-              <div className="timer">
-                <h1>Timer</h1>
-                <button
-                  type="button"
-                  onClick={() =>
-                    handleInputChange({ target: { value: "OFF" } }, "timer")
-                  }
-                  className={
-                    questions[activeQuestionIndex].timer === "OFF"
-                      ? "timer-btn-selected"
-                      : "timer-btn"
-                  }
-                >
-                  OFF
-                </button>
-                <button
-                  type="button"
-                  onClick={() =>
-                    handleInputChange({ target: { value: "5 Sec" } }, "timer")
-                  }
-                  className={
-                    questions[activeQuestionIndex].timer === "5 Sec"
-                      ? "timer-btn-selected"
-                      : "timer-btn"
-                  }
-                >
-                  5 Sec
-                </button>
-                <button
-                  type="button"
-                  onClick={() =>
-                    handleInputChange({ target: { value: "10 Sec" } }, "timer")
-                  }
-                  className={
-                    questions[activeQuestionIndex].timer === "10 Sec"
-                      ? "timer-btn-selected"
-                      : "timer-btn"
-                  }
-                >
-                  10 Sec
-                </button>
-              </div>
+              {quizType === "Poll Type" ? null : (
+                <div className="timer">
+                  <h1>Timer</h1>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleInputChange({ target: { value: "OFF" } }, "timer")
+                    }
+                    className={
+                      questions[activeQuestionIndex].timer === "OFF"
+                        ? "timer-btn-selected"
+                        : "timer-btn"
+                    }
+                  >
+                    OFF
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleInputChange({ target: { value: "5 Sec" } }, "timer")
+                    }
+                    className={
+                      questions[activeQuestionIndex].timer === "5 Sec"
+                        ? "timer-btn-selected"
+                        : "timer-btn"
+                    }
+                  >
+                    5 Sec
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleInputChange(
+                        { target: { value: "10 Sec" } },
+                        "timer"
+                      )
+                    }
+                    className={
+                      questions[activeQuestionIndex].timer === "10 Sec"
+                        ? "timer-btn-selected"
+                        : "timer-btn"
+                    }
+                  >
+                    10 Sec
+                  </button>
+                </div>
+              )}
             </div>
           </div>
           <div className="add-questions-buttons-container">
