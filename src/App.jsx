@@ -17,6 +17,7 @@ import QuizResult from "./pages/QuizResult";
 import Createquiz from "./pages/Createquiz";
 import Analytics from "./pages/Analytics";
 import QAAnalysis from "./pages/QAAnalysis";
+import PollAnalysis from "./pages/PollAnalysis";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/quiz/:quizId" element={<QuizAttempt />} />
           <Route path="/quiz/:quizId/result" element={<QuizResult />} />
           <Route path="/analytics/qa/:quizId" element={<QAAnalysis />} />
+          <Route path="/analytics/poll/:quizId" element={<PollAnalysis />} />
         </Routes>
       </Router>
     </AuthProvider>

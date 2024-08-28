@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./QuizAttempt.css";
 
@@ -6,33 +6,19 @@ const QuizAttempt = () => {
   const { quizId } = useParams();
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
-  const [timer, setTimer] = useState(10); // initial timer value in seconds
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(1);
+  const [timer, setTimer] = useState(0); // initial timer value in seconds
   const navigate = useNavigate();
   const [quizType, setQuizType] = useState("");
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/quiz/${quizId}`)
       .then((response) => response.json())
       .then((data) => {
         setQuestions(data.questions);
-        setQuizType(data.type); // Set quiz type
+        setQuizType(data.type);
         setTimer(data.questions[0].timer || 0);
-        console.log("Quiz fetched with type:", data.type);
-
-        incrementViewCount();
-      })
-      .catch((error) => console.error("Error fetching quiz:", error));
-  }, [quizId]);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/quiz/${quizId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setQuestions(data.questions);
-        setTimer(data.questions[0].timer || 0);
-        console.log("Quiz fetched");
-
         incrementViewCount();
       })
       .catch((error) => console.error("Error fetching quiz:", error));
@@ -44,7 +30,7 @@ const QuizAttempt = () => {
         setTimer((prevTimer) => prevTimer - 1);
       }, 1000);
       return () => clearInterval(countdown);
-    } else if (timer === 0 && questions[currentQuestionIndex].timer > 0) {
+    } else if (timer === 0 && questions[currentQuestionIndex]?.timer > 0) {
       handleNextQuestion();
     }
   }, [timer]);
@@ -52,9 +38,7 @@ const QuizAttempt = () => {
   const incrementViewCount = () => {
     fetch(
       `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/quiz/${quizId}/views`,
-      {
-        method: "PUT",
-      }
+      { method: "PUT" }
     )
       .then((response) => response.json())
       .then((data) => {
@@ -64,12 +48,22 @@ const QuizAttempt = () => {
   };
 
   const handleNextQuestion = () => {
+    const currentQuestion = questions[currentQuestionIndex];
+    const selectedOption =
+      selectedOptionIndex !== null
+        ? currentQuestion.options[selectedOptionIndex]
+        : null;
+    const isCorrect = selectedOption?.correct || false;
+
+    if (selectedOption) {
+      handleAddAnalytics(selectedOption, isCorrect);
+    }
+
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-
+      setSelectedOptionIndex(null); // Reset selected option for next question
       setTimer(questions[currentQuestionIndex + 1].timer || 0);
     } else {
-      // Handle quiz completion, maybe navigate to a result page
       navigate(`/quiz/${quizId}/result`, {
         state: {
           correctAnswers: correctAnswersCount,
@@ -79,9 +73,12 @@ const QuizAttempt = () => {
     }
   };
 
-  const handleOptionClick = (option, isCorrect) => {
-    let requestBody = {};
+  const handleAddAnalytics = (option, isCorrect) => {
+    if (isCorrect) {
+      setCorrectAnswersCount((prevCount) => prevCount + 1);
+    }
 
+    let requestBody = {};
     if (quizType === "Q&A") {
       requestBody = {
         questions: [
@@ -91,7 +88,6 @@ const QuizAttempt = () => {
           },
         ],
       };
-
       fetch(
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_URL
@@ -113,7 +109,6 @@ const QuizAttempt = () => {
           },
         ],
       };
-
       fetch(
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_URL
@@ -127,8 +122,10 @@ const QuizAttempt = () => {
         }
       );
     }
+  };
 
-    handleNextQuestion();
+  const handleOptionClick = (index) => {
+    setSelectedOptionIndex(index);
   };
 
   if (questions.length === 0) {
@@ -142,47 +139,38 @@ const QuizAttempt = () => {
       <div className="quiz-container">
         <div className="question-header">
           <span>{`${currentQuestionIndex + 1}/${questions.length}`}</span>
-          {timer === 0 ? null : (
-            <span style={{ color: "red" }}>{`00:${timer}s`}</span>
-          )}
+          {timer > 0 && <span style={{ color: "red" }}>{`00:${timer}s`}</span>}
         </div>
         <div className="question-text">{currentQuestion.questionText}</div>
         <div className="options">
           {currentQuestion.options.map((option, index) => (
-            <>
+            <div
+              key={index}
+              onClick={() => handleOptionClick(index)}
+              className={`option-container ${
+                selectedOptionIndex === index ? "selected-option" : ""
+              }`}
+            >
               {currentQuestion.optionType === "Text" && (
-                <button
-                  key={index}
-                  onClick={() => handleOptionClick(option, option.correct)}
-                  className="option-button"
-                >
-                  {option.text}
-                </button>
+                <button className="option-button">{option.text}</button>
               )}
               {currentQuestion.optionType === "ImageURL" && (
-                <img
-                  className="option-image-url"
-                  key={index}
-                  onClick={() => handleOptionClick(option, option.correct)}
-                  src={option.text}
-                  alt=""
-                />
+                <img className="option-image-url" src={option.text} alt="" />
               )}
               {currentQuestion.optionType === "Text&ImageURL" && (
                 <div className="textimgurl-option">
                   <span>{option.text}</span>
-                  <img
-                    key={index}
-                    onClick={() => handleOptionClick(option, option.correct)}
-                    src={option.url}
-                    alt=""
-                  />
+                  <img className="option-image-url" src={option.url} alt="" />
                 </div>
               )}
-            </>
+            </div>
           ))}
         </div>
-        <button className="next-button" onClick={handleNextQuestion}>
+        <button
+          className="next-button"
+          onClick={handleNextQuestion}
+          disabled={selectedOptionIndex === null}
+        >
           {currentQuestionIndex === questions.length - 1 ? "Submit" : "Next"}
         </button>
       </div>

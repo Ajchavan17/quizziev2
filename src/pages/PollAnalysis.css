@@ -8,44 +8,41 @@
   overflow-x: auto;
 }
 
-.quiz-qa-analysis-container {
+.quiz-poll-analysis-container {
   width: 1100px;
   height: 700px;
 }
 
-.quiz-qa-analysis-header {
+.quiz-poll-analysis-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.quiz-qa-analysis-info {
+.quiz-poll-analysis-info {
   display: flex;
 
   flex-direction: column;
 }
 
-.quiz-qa-analysis-question-container {
+.quiz-poll-analysis-question-container {
   display: flex;
   flex-direction: column;
 }
 
-.quiz-qa-analysis-options-info {
+.quiz-poll-analysis-options-info {
   display: flex;
   gap: 30px;
 }
-.quiz-qa-analysis-options-info div {
+.quiz-poll-analysis-options-info div {
   height: 89px;
-  width: 245px;
+  width: 174px;
   background-color: #ffffff;
   border-radius: 5px;
 }
-.quiz-qa-analysis-options-attempt,
-.quiz-qa-analysis-options-answered-correct,
-.quiz-qa-analysis-options-answered-incorrect {
+.quiz-poll-analysis-options-attempt {
   display: flex;
-  flex-direction: column;
-
+  gap: 10px;
   align-items: center;
   justify-content: center;
 }
@@ -57,12 +54,12 @@
   border: 2px solid #e0e0e0;
 }
 
-.quiz-qa-analysis-header {
+.quiz-poll-analysis-header {
   position: sticky;
   top: 0;
 }
 
-.quiz-qa-analysis-header div h1 {
+.quiz-poll-analysis-header div h1 {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -71,7 +68,7 @@
   color: #5076ff;
 }
 
-.quiz-qa-analysis-info span {
+.quiz-poll-analysis-info span {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -80,7 +77,7 @@
   color: #ff5d01;
 }
 
-.quiz-qa-analysis-question h1 {
+.quiz-poll-analysis-question h1 {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -89,9 +86,9 @@
   color: #000000;
 }
 
-.quiz-qa-analysis-options-attempt :nth-child(2),
-.quiz-qa-analysis-options-answered-correct :nth-child(2),
-.quiz-qa-analysis-options-answered-incorrect :nth-child(2) {
+.quiz-poll-analysis-options-attempt :nth-child(2),
+.quiz-poll-analysis-options-answered-correct :nth-child(2),
+.quiz-poll-analysis-options-answered-incorrect :nth-child(2) {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -100,9 +97,9 @@
   color: #474444;
 }
 
-.quiz-qa-analysis-options-attempt :nth-child(1),
-.quiz-qa-analysis-options-answered-correct :nth-child(1),
-.quiz-qa-analysis-options-answered-incorrect :nth-child(1) {
+.quiz-poll-analysis-options-attempt :nth-child(1),
+.quiz-poll-analysis-options-answered-correct :nth-child(1),
+.quiz-poll-analysis-options-answered-incorrect :nth-child(1) {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;

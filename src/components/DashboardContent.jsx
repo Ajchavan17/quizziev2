@@ -66,21 +66,21 @@ function DashboardContent() {
       <div className="quiz-count-content">
         <div className="quiz-count-1">
           <div>
-            <h1>{quizCount}</h1>
+            <span>{quizCount}</span>
             <p>Quiz</p>
           </div>
           <p>Created</p>
         </div>
         <div className="quiz-count-2">
           <div>
-            <h1>{totalQuestions}</h1>
+            <span>{totalQuestions}</span>
             <p>Questions</p>
           </div>
           <p>Created</p>
         </div>
         <div className="quiz-count-3">
           <div>
-            <h1>{formatImpressions(totalImpressions)}</h1>
+            <span>{formatImpressions(totalImpressions)}</span>
             <p>Total</p>
           </div>
           <p>Impressions</p>

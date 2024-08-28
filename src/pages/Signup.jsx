@@ -56,6 +56,7 @@ function Login() {
 
   const validateForm = () => {
     const formErrors = {};
+
     Object.keys(formData).forEach((key) => {
       const error = validateField(key, formData[key]);
       if (error) {
@@ -73,15 +74,14 @@ function Login() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    const error = validateField(name, value);
-    setErrors({ ...errors, [name]: error });
+    // No validation here
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
-      return;
+      return; // Stop submission if there are errors
     }
 
     try {
@@ -99,8 +99,8 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
+        setErrors({});
         toast.success("Signed up successfully!");
-        // login(data.token);
         navigate("/login");
       } else {
         setFormError(data.message || "An error occurred");

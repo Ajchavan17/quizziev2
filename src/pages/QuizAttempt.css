@@ -126,7 +126,10 @@
   line-height: 52px;
   color: #000000;
 }
-
+.selected-option {
+  border: 5px solid #5076ff;
+  border-radius: 10px; /* Customize the border color and style */
+}
 .option-image-url {
   height: 159px;
   width: 324px;

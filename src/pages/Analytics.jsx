@@ -47,6 +47,7 @@ function Analytics() {
             year: "numeric",
           }),
           impression: formatImpressions(quiz.views),
+          type: quiz.type,
         }));
         setQuizData(formattedData);
       } catch (error) {
@@ -176,11 +177,12 @@ function Analytics() {
                       </td>
                       <td>
                         <a
-                          // if quiz.type is Q&A then href is {`/analytics/qa/${quiz.id}`} || if quiz.type is Poll then href is {`/analytics/poll/${quiz.id}`}
                           href={
                             quiz.type === "Q&A"
                               ? `/analytics/qa/${quiz.id}`
-                              : `/analytics/poll/${quiz.id}`
+                              : "" || quiz.type === "Poll Type"
+                              ? `/analytics/poll/${quiz.id}`
+                              : ""
                           }
                           className="analysis-link"
                         >
