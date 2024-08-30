@@ -141,7 +141,9 @@ const QuizAttempt = () => {
           <span>{`${currentQuestionIndex + 1}/${questions.length}`}</span>
           {timer > 0 && <span style={{ color: "red" }}>{`00:${timer}s`}</span>}
         </div>
-        <div className="question-text">{currentQuestion.questionText}</div>
+        <div className="question-text">
+          Your question text comes here, its a sample text.
+        </div>
         <div className="options">
           {currentQuestion.options.map((option, index) => (
             <div

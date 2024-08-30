@@ -6,11 +6,14 @@ import binIcon from "../assets/binIcon.svg";
 import editIcon from "../assets/editIcon.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AddQuestionsComp from "../components/AddQuestionsComp";
 
 function Analytics() {
   const [quizData, setQuizData] = useState([]);
   const [quizToDelete, setQuizToDelete] = useState(null); // Store the quiz ID to be deleted
   const [quizLength, setQuizLength] = useState(quizData.length);
+  const [editQuiz, setEditQuiz] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
   // Function to format the impressions
   const formatImpressions = (views) => {
     return views > 1000 ? (views / 1000).toFixed(1) + "K" : views;
@@ -116,6 +119,11 @@ function Analytics() {
     setQuizToDelete(null); // Cancel the deletion
   };
 
+  const handleEditQuiz = (quizId) => {
+    setEditQuiz(quizId);
+    setShowEditModal(true);
+  };
+
   return (
     <div className="main-container">
       <div className="nav-container">
@@ -163,7 +171,11 @@ function Analytics() {
                       <td>{quiz.createdOn}</td>
                       <td>{quiz.impression}</td>
                       <td className="table-icons">
-                        <img src={editIcon} alt="editIcon" />
+                        <img
+                          src={editIcon}
+                          alt="editIcon"
+                          onClick={() => handleEditQuiz(quiz.id)}
+                        />
                         <img
                           src={binIcon}
                           alt="binIcon"
@@ -216,6 +228,8 @@ function Analytics() {
           </div>
         </div>
       )}
+
+      {showEditModal && <AddQuestionsComp quizId={editQuiz} />}
     </div>
   );
 }

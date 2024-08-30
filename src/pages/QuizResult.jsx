@@ -23,19 +23,20 @@ const QuizResult = () => {
   return (
     <div className="quiz-result-container">
       <div className="result-container">
-        {quizType === "Q&A" ? (
+        {quizType === "Poll Type" ? (
+          <h2 className="poll-h2">Thank you for participating in the Poll</h2>
+        ) : (
           <>
             <h2>Congrats, Quiz is completed</h2>
             <img src={trophyIcon} alt="Trophy" className="trophy-image" />
             <p>
               Your Score is{" "}
               <span className="score">
+                <br />
                 {correctAnswers}/{totalQuestions}
               </span>
             </p>
           </>
-        ) : (
-          <h2 className="poll-h2">Thank you for participating in the Poll</h2>
         )}
       </div>
     </div>
