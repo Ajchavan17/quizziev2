@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Createquiz.css";
 import { useNavigate } from "react-router-dom";
+import Analytics from "./Analytics";
 
 function Createquiz() {
   const [quizName, setQuizName] = useState("");
@@ -49,51 +50,56 @@ function Createquiz() {
   };
 
   return (
-    <div className="create-quiz-container">
-      <form className="create-quiz-container-box" onSubmit={handleSubmit}>
-        <div className="create-quiz-name-container">
-          <input
-            type="text"
-            placeholder="Quiz Name"
-            value={quizName}
-            onChange={(e) => setQuizName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="create-quiz-type-container">
-          <h1>Quiz Type</h1>
+    <>
+      <>
+        <Analytics />
+      </>
+      <div className="create-quiz-container">
+        <form className="create-quiz-container-box" onSubmit={handleSubmit}>
+          <div className="create-quiz-name-container">
+            <input
+              type="text"
+              placeholder="Quiz Name"
+              value={quizName}
+              onChange={(e) => setQuizName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="create-quiz-type-container">
+            <h1>Quiz Type</h1>
 
-          <button
-            type="button"
-            onClick={() => setSelectedTestType("Q&A")}
-            className={selectedTestType === "Q&A" ? "selectedTestType" : ""}
-          >
-            Q&A
-          </button>
-          <button
-            type="button"
-            onClick={() => setSelectedTestType("Poll Type")}
-            className={
-              selectedTestType === "Poll Type" ? "selectedTestType" : ""
-            }
-          >
-            Poll Type
-          </button>
-        </div>
-        <div className="create-quiz-buttons-container">
-          <button
-            type="button"
-            className="cancel-btn"
-            onClick={() => navigate("/dashboard")}
-          >
-            Cancel
-          </button>
-          <button type="submit" className="continue-btn">
-            Continue
-          </button>
-        </div>
-      </form>
-    </div>
+            <button
+              type="button"
+              onClick={() => setSelectedTestType("Q&A")}
+              className={selectedTestType === "Q&A" ? "selectedTestType" : ""}
+            >
+              Q&A
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedTestType("Poll Type")}
+              className={
+                selectedTestType === "Poll Type" ? "selectedTestType" : ""
+              }
+            >
+              Poll Type
+            </button>
+          </div>
+          <div className="create-quiz-buttons-container">
+            <button
+              type="button"
+              className="cancel-btn"
+              onClick={() => navigate("/dashboard")}
+            >
+              Cancel
+            </button>
+            <button type="submit" className="continue-btn">
+              Continue
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 

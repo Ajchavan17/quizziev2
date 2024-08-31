@@ -37,14 +37,17 @@
 .quiz-poll-analysis-options-info div {
   height: 89px;
   width: 174px;
+
   background-color: #ffffff;
   border-radius: 5px;
+  padding-left: 15px;
 }
 .quiz-poll-analysis-options-attempt {
   display: flex;
-  gap: 10px;
+  /* gap: 20px; */
+
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
 }
 
 .hr {
@@ -106,4 +109,34 @@
   font-size: 30px;
   line-height: 45px;
   color: #474444;
+}
+
+.quiz-poll-analysis-options {
+  /* height: 100%;
+  max-width: 100px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  overflow: hidden;
+}
+
+.quiz-poll-analysis-options img {
+  height: 70px;
+  width: 70px;
+  border-radius: 5px;
+}
+
+.quiz-poll-analysis-options span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px !important;
+  color: #474444;
+  line-height: 1.2; /* Adjust this to control vertical spacing */
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  overflow: hidden; /* Ensures text stays within bounds */
+  text-overflow: ellipsis; /* Adds ellipsis (...) if text overflows */
+  max-width: 100%; /* Ensures span width doesn't exceed parent */
 }

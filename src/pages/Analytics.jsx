@@ -119,9 +119,48 @@ function Analytics() {
     setQuizToDelete(null); // Cancel the deletion
   };
 
-  const handleEditQuiz = (quizId) => {
-    setEditQuiz(quizId);
-    setShowEditModal(true);
+  const handleEditClick = async (quizId) => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/quiz/${quizId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const quizData = await response.json();
+        setEditQuiz(quizData);
+        setShowEditModal(true);
+      } else {
+        console.error("Failed to fetch quiz data for editing");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
+  // Close the edit modal
+  const handleCloseEditModal = () => {
+    setShowEditModal(false);
+    setEditQuiz(null);
+  };
+
+  const formatDate = (dateString) => {
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    let formattedDate = new Date(dateString).toLocaleDateString(
+      "en-GB",
+      options
+    );
+
+    const [day, monthYear, year] = formattedDate.split(" ");
+    return `${day} ${monthYear.replace(",", "")}, ${year}`;
   };
 
   return (
@@ -168,13 +207,13 @@ function Analytics() {
                     >
                       <td>{index + 1}</td>
                       <td>{quiz.name}</td>
-                      <td>{quiz.createdOn}</td>
+                      <td>{formatDate(quiz.createdOn)}</td>
                       <td>{quiz.impression}</td>
                       <td className="table-icons">
                         <img
                           src={editIcon}
                           alt="editIcon"
-                          onClick={() => handleEditQuiz(quiz.id)}
+                          onClick={() => handleEditClick(quiz.id)}
                         />
                         <img
                           src={binIcon}
@@ -229,7 +268,14 @@ function Analytics() {
         </div>
       )}
 
-      {showEditModal && <AddQuestionsComp quizId={editQuiz} />}
+      {showEditModal && (
+        <AddQuestionsComp
+          mode={"edit"}
+          quizId={editQuiz?._id}
+          quizData={editQuiz}
+          onClose={handleCloseEditModal}
+        />
+      )}
     </div>
   );
 }

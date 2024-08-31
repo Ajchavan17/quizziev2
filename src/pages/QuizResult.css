@@ -60,10 +60,18 @@ p {
   text-align: center;
   color: #474444;
 }
+
+.mobile-break {
+  display: none;
+}
 @media screen and (max-width: 480px) {
   body,
   html {
     margin: 0;
+  }
+
+  .mobile-break {
+    display: block;
   }
   .quiz-result-container {
     background-color: #fff;

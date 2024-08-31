@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
 }
 
 .nav-item-1 {
@@ -25,10 +27,9 @@
 .nav-item-2 {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 60px;
-  padding: 10px;
 }
 
 .nav-item-2 a {
@@ -39,7 +40,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  text-align: center;
+  /* text-align: center; */
   color: #000000;
 }
 
@@ -48,6 +49,10 @@
   width: 176px;
   border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(20, 20, 20, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .nav-item-3 {
@@ -59,17 +64,26 @@
 }
 
 .nav-item-3 button {
-  font-size: 20px;
-  font-family: "Poppins", sans-serif;
-  font-style: bold;
-  font-weight: 800;
   background: none;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #474444;
   border: none;
   cursor: pointer;
+  text-align: center;
 }
 
 .nav-item-3 div {
   height: 0;
   width: 124px;
   border: 1px solid #000000;
+}
+
+.nav-item-2 NavLink {
+  text-align: center;
 }

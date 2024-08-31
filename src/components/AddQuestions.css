@@ -314,11 +314,8 @@
 /* new updated code */
 .option-input-radio {
   position: absolute;
-  right: 74%;
-  margin-top: 18px;
-  height: 15px;
-  width: 15px;
-  accent-color: #60b84b;
+  right: 70%;
+  margin-top: 20px;
 }
 
 .option-input-input {
@@ -365,7 +362,7 @@
 
 .question-close-icon {
   position: absolute;
-  top: 25px;
+  margin-bottom: 45px;
   margin-left: 40px;
   cursor: pointer;
 }
@@ -401,4 +398,68 @@
 .correct-option {
   color: #ffffff !important;
   background: #60b84b;
+}
+
+/* radio button custom */
+
+/* Hide the default radio button */
+.option-input-radio[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%; /* Make the input cover the span */
+  height: 100%;
+  margin: 0;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Custom radio button */
+
+.correct-option-radio-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-left: -40px;
+}
+.custom-radio {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  background-color: #fff; /* Light gray outer circle */
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid #d9d9d9; /* Same color as background */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Inner circle */
+.custom-radio:after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background-color: transparent; /* Initially transparent */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease;
+}
+
+/* Change appearance when checked */
+input[type="radio"]:checked + .custom-radio {
+  border-color: #d9d9d9; /* Change outer border color on selection */
+}
+
+input[type="radio"]:checked + .custom-radio:after {
+  background-color: #60b84b; /* Green inner circle */
+}
+
+/* Optional: Hover effect */
+input[type="radio"]:hover + .custom-radio {
+  border-color: #d9d9d9; /* Darker gray on hover */
 }

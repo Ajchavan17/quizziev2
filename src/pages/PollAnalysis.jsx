@@ -47,12 +47,15 @@ function PollAnalysis() {
             );
             return {
               text: option.text,
+              type: question.optionType,
+              url: option.url, // Assuming you have a `url` property in your options
               count: matchingOption ? matchingOption.selectionCount : 0,
             };
           });
 
           return {
             questionText: question.questionText,
+            optionType: question.optionType,
             options: optionsWithCounts,
           };
         });
@@ -69,6 +72,22 @@ function PollAnalysis() {
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "short", year: "numeric" };
     return new Date(dateString).toLocaleDateString("en-GB", options);
+  };
+
+  const renderOption = ({ optionType, option }) => {
+    switch (optionType) {
+      case "Text":
+        return <span>{option.text}</span>;
+      case "ImageURL":
+        return <img src={option.text} />;
+      case "Text&ImageURL":
+        return (
+          <>
+            <span>{option.text}</span>
+            <img src={option.url} alt="Option" />
+          </>
+        );
+    }
   };
 
   return (
@@ -102,7 +121,12 @@ function PollAnalysis() {
                       className="quiz-poll-analysis-options-attempt"
                     >
                       <span>{option.count}</span>
-                      <span>{option.text}</span>
+                      <div className="quiz-poll-analysis-options">
+                        {renderOption({
+                          optionType: question.optionType,
+                          option,
+                        })}
+                      </div>
                     </div>
                   ))}
                 </div>

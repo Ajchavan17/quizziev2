@@ -6,10 +6,12 @@
   width: 100%;
   position: absolute;
   display: flex;
+  top: 0;
   left: 0px;
   background-color: rgba(0, 0, 0, 0.4);
   justify-content: center;
   align-items: center;
+  /* z-index: 100001; */
 }
 
 .create-quiz-container-box {

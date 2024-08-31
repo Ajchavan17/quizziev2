@@ -74,7 +74,7 @@ function Login() {
         </div>
         {formError && <div className="error-message">{formError}</div>}
         <form onSubmit={handleSubmit}>
-          <div className="from-contianer">
+          <div className="login-from-contianer">
             <div className="form-fields-title">
               <h1>Email</h1>
               <h1>Password</h1>
@@ -96,7 +96,7 @@ function Login() {
           </div>
 
           <div>
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="login-submit-btn">
               Log In
             </button>
           </div>

@@ -79,11 +79,11 @@ input {
 }
 
 /*  */
-.login-from-contianer {
+.from-contianer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0px;
+  margin-top: 30px;
   height: 245px;
   width: 650px;
   gap: 30px;
@@ -117,14 +117,14 @@ input {
   border-radius: 10px 10px 0px 0px;
 }
 
-.login-submit-btn {
+.submit-btn {
   width: 274px;
   height: 38px;
   font-size: 20px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  margin-top: 0px;
+  margin-top: 50px;
   background: #a9bcff;
   border-radius: 8px;
   border: none;

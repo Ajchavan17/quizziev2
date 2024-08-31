@@ -54,11 +54,24 @@ function DashboardContent() {
 
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "short", year: "numeric" };
-    return new Date(dateString).toLocaleDateString("en-GB", options);
+    let formattedDate = new Date(dateString).toLocaleDateString(
+      "en-GB",
+      options
+    );
+
+    const [day, monthYear, year] = formattedDate.split(" ");
+    return `${day} ${monthYear.replace(",", "")}, ${year}`;
   };
 
   const formatImpressions = (views) => {
     return views > 1000 ? (views / 1000).toFixed(1) + "K" : views;
+  };
+
+  const ellipsize = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
   };
 
   return (
@@ -74,7 +87,7 @@ function DashboardContent() {
         <div className="quiz-count-2">
           <div>
             <span>{totalQuestions}</span>
-            <p>Questions</p>
+            <p>questions</p>
           </div>
           <p>Created</p>
         </div>
@@ -88,13 +101,13 @@ function DashboardContent() {
       </div>
       <div className="trending-quiz-count-container">
         <div className="trending-quiz-container-1">
-          <h1>Trending Quizzes</h1>
+          <h1>Trending Quizs</h1>
         </div>
         <div className="trending-quiz-container-2">
           {tredndingQuizData.map((quiz, index) => (
             <div key={index} className="trending-quiz-box">
               <div className="trending-quiz-name-attempt">
-                <h1>{quiz.name}</h1>
+                <h1>{ellipsize(quiz.name, 6)}</h1>
                 <span>
                   <p>{formatImpressions(quiz.views)}</p>
                   <img src={eyeIcon} alt="" />

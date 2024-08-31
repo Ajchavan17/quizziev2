@@ -61,7 +61,7 @@ const QuizAttempt = () => {
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedOptionIndex(null); // Reset selected option for next question
+      setSelectedOptionIndex(null);
       setTimer(questions[currentQuestionIndex + 1].timer || 0);
     } else {
       navigate(`/quiz/${quizId}/result`, {
@@ -138,7 +138,7 @@ const QuizAttempt = () => {
     <div className="quiz-attempt-container">
       <div className="quiz-container">
         <div className="question-header">
-          <span>{`${currentQuestionIndex + 1}/${questions.length}`}</span>
+          <span>0{`${currentQuestionIndex + 1}/0${questions.length}`}</span>
           {timer > 0 && <span style={{ color: "red" }}>{`00:${timer}s`}</span>}
         </div>
         <div className="question-text">
