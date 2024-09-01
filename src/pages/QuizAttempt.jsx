@@ -6,7 +6,7 @@ const QuizAttempt = () => {
   const { quizId } = useParams();
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [correctAnswersCount, setCorrectAnswersCount] = useState(1);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [timer, setTimer] = useState(0); // initial timer value in seconds
   const navigate = useNavigate();
   const [quizType, setQuizType] = useState("");
@@ -55,11 +55,12 @@ const QuizAttempt = () => {
         : null;
     const isCorrect = selectedOption?.correct || false;
 
-    if (selectedOptionIndex === null && timer === 0) {
-      handleAddAnalytics(null, false); // Send incorrect analytics
-    } else if (selectedOption) {
-      handleAddAnalytics(selectedOption, isCorrect);
-    }
+    // if (selectedOptionIndex === null && timer === 0) {
+    //   handleAddAnalytics(null, false); // Send incorrect analytics
+    // } else if (selectedOption) {
+    //   handleAddAnalytics(selectedOption, isCorrect);
+    // }
+    handleAddAnalytics(selectedOption, isCorrect);
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -68,7 +69,7 @@ const QuizAttempt = () => {
     } else {
       navigate(`/quiz/${quizId}/result`, {
         state: {
-          correctAnswers: correctAnswersCount,
+          correctAnswers: correctAnswersCount + (isCorrect ? 1 : 0),
           totalQuestions: questions.length,
         },
       });
