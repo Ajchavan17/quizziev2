@@ -2,10 +2,11 @@
   height: 100vh;
   width: 100%;
   background-color: #ededed;
-  max-width: 80%;
+
+  max-width: 87%;
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  /* padding: 10px; */
 }
 
 .quiz-count-content {
@@ -16,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 50px;
   gap: 20px;
 }
 
@@ -39,7 +40,7 @@
 .quiz-count-2,
 .quiz-count-3 {
   height: 145px;
-  width: 295px;
+  width: 310px;
   border-radius: 10px;
   background-color: white;
   display: flex;
@@ -93,7 +94,7 @@
 }
 
 .trending-quiz-count-container {
-  margin-top: 60px;
+  margin-top: 0px;
   background-color: #ededed;
   width: 100%;
 

@@ -5,30 +5,31 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if token is present in localStorage
     const token = localStorage.getItem("token");
-    console.log("Retrieved token from localStorage:", token); // Add this line
+    console.log("Retrieved token from localStorage:", token);
     if (token) {
       setIsAuthenticated(true);
     }
+    setLoading(false); // Authentication check is done
   }, []);
 
   const login = (token) => {
     localStorage.setItem("token", token);
-    console.log("Token saved to localStorage:", token); // Add this line
+    console.log("Token saved to localStorage:", token);
     setIsAuthenticated(true);
   };
 
   const logout = () => {
     localStorage.removeItem("token");
-    console.log("Token removed from localStorage"); // Add this line
+    console.log("Token removed from localStorage");
     setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
