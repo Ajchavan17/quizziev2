@@ -6,7 +6,7 @@ const QuizAttempt = () => {
   const { quizId } = useParams();
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [correctAnswersCount, setCorrectAnswersCount] = useState(1);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(null);
   const [timer, setTimer] = useState(0); // initial timer value in seconds
   const navigate = useNavigate();
   const [quizType, setQuizType] = useState("");
@@ -54,6 +54,12 @@ const QuizAttempt = () => {
         ? currentQuestion.options[selectedOptionIndex]
         : null;
     const isCorrect = selectedOption?.correct || false;
+
+    if (selectedOptionIndex === null && timer === 0) {
+      handleAddAnalytics(null, false); // Send incorrect analytics
+    } else if (selectedOption) {
+      handleAddAnalytics(selectedOption, isCorrect);
+    }
 
     if (selectedOption) {
       handleAddAnalytics(selectedOption, isCorrect);

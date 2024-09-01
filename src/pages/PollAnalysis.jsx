@@ -71,7 +71,13 @@ function PollAnalysis() {
 
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "short", year: "numeric" };
-    return new Date(dateString).toLocaleDateString("en-GB", options);
+    let formattedDate = new Date(dateString).toLocaleDateString(
+      "en-GB",
+      options
+    );
+
+    const [day, monthYear, year] = formattedDate.split(" ");
+    return `${day} ${monthYear.replace(",", "")}, ${year}`;
   };
 
   const renderOption = ({ optionType, option }) => {

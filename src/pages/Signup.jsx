@@ -44,7 +44,7 @@ function Login() {
         break;
       case "confirmPassword":
         if (value !== formData.password) {
-          error = "Passwords do not match";
+          error = "password doesn't match";
         }
         break;
       default:
@@ -72,16 +72,22 @@ function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
 
-    // No validation here
+    // Clear the error for the current field
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
+
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
-      return; // Stop submission if there are errors
+      toast.error("Please correct the errors before submitting.");
+      return;
     }
 
     try {
@@ -108,6 +114,7 @@ function Login() {
       }
     } catch (error) {
       setFormError("Server error");
+      toast.error("Server error");
     }
   };
 

@@ -35,7 +35,8 @@ const QuizResult = () => {
             <p>
               Your Score is{" "}
               <span className="score">
-                <br className="mobile-break" />0{correctAnswers}/0
+                <br className="mobile-break" />0
+                {correctAnswers - 1 === -1 ? 0 : correctAnswers - 1}/0
                 {totalQuestions}
               </span>
             </p>
