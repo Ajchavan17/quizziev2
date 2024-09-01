@@ -6,7 +6,7 @@ const QuizAttempt = () => {
   const { quizId } = useParams();
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [correctAnswersCount, setCorrectAnswersCount] = useState(null);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(1);
   const [timer, setTimer] = useState(0); // initial timer value in seconds
   const navigate = useNavigate();
   const [quizType, setQuizType] = useState("");
@@ -58,10 +58,6 @@ const QuizAttempt = () => {
     if (selectedOptionIndex === null && timer === 0) {
       handleAddAnalytics(null, false); // Send incorrect analytics
     } else if (selectedOption) {
-      handleAddAnalytics(selectedOption, isCorrect);
-    }
-
-    if (selectedOption) {
       handleAddAnalytics(selectedOption, isCorrect);
     }
 
@@ -147,9 +143,7 @@ const QuizAttempt = () => {
           <span>0{`${currentQuestionIndex + 1}/0${questions.length}`}</span>
           {timer > 0 && <span style={{ color: "red" }}>{`00:${timer}s`}</span>}
         </div>
-        <div className="question-text">
-          Your question text comes here, its a sample text.
-        </div>
+        <div className="question-text">{currentQuestion.questionText}</div>
         <div className="options">
           {currentQuestion.options.map((option, index) => (
             <div

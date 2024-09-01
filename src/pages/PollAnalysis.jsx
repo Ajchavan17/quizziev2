@@ -35,20 +35,30 @@ function PollAnalysis() {
         );
         const analyticsData = await analyticsResponse.json();
 
+        console.log("Quiz Data:", quizData);
+        console.log("Analytics Data:", analyticsData);
+
         // Process the data to match your component's structure
         const processedData = quizData.questions.map((question) => {
           const analytics = analyticsData.find(
             (a) => a.questionId === question._id
           );
 
+          // Handle cases where no analytics data is found for a question
           const optionsWithCounts = question.options.map((option) => {
-            const matchingOption = analytics.options.find(
+            const matchingOption = analytics?.options.find(
               (o) => o.optionId === option._id
             );
+
+            // Added more detailed logging for debugging
+            console.log("Question:", question.questionText);
+            console.log("Option:", option.text);
+            console.log("Matching Option:", matchingOption);
+
             return {
               text: option.text,
               type: question.optionType,
-              url: option.url, // Assuming you have a `url` property in your options
+              url: option.url,
               count: matchingOption ? matchingOption.selectionCount : 0,
             };
           });
@@ -61,6 +71,7 @@ function PollAnalysis() {
         });
 
         setQuizAnalysisData(processedData);
+        console.log("Processed Data:", processedData);
       } catch (error) {
         console.error("Error fetching quiz data:", error);
       }
@@ -85,7 +96,7 @@ function PollAnalysis() {
       case "Text":
         return <span>{option.text}</span>;
       case "ImageURL":
-        return <img src={option.text} />;
+        return <img src={option.text} alt="Option" />;
       case "Text&ImageURL":
         return (
           <>
@@ -106,7 +117,7 @@ function PollAnalysis() {
           <div>
             <div className="quiz-poll-analysis-header">
               <div>
-                <h1>{quizInfo.name} - Quiz Analysis</h1>
+                <h1>{quizInfo.name} Question Analysis</h1>
               </div>
               <div className="quiz-poll-analysis-info">
                 <span>Created On: {formatDate(quizInfo.createdAt)}</span>
